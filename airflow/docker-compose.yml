@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+
+  airflow-webserver:
+    image: apache/airflow:2.10.0
+
+    depends_on:
+      - postgres
+
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - ./configs:/opt/airflow/configs
+
+    command: webserver
+
+    ports:
+      - "8080:8080"
+
+  airflow-scheduler:
+    image: apache/airflow:2.10.0
+
+    depends_on:
+      - postgres
+
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - ./configs:/opt/airflow/configs
+
+    command: scheduler
