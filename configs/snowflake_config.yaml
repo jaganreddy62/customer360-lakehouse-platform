@@ -1,0 +1,13 @@
+account: YOUR_ACCOUNT
+
+user: YOUR_USER
+
+password: YOUR_PASSWORD
+
+warehouse: COMPUTE_WH
+
+database: CUSTOMER360
+
+schema: RAW
+
+role: ACCOUNTADMIN

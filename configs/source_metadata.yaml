@@ -1,0 +1,13 @@
+sources:
+
+  customers:
+    source_file: data/raw/customers.csv
+    target_table: RAW_CUSTOMERS
+
+  products:
+    source_file: data/raw/products.csv
+    target_table: RAW_PRODUCTS
+
+  orders:
+    source_file: data/raw/orders.csv
+    target_table: RAW_ORDERS
